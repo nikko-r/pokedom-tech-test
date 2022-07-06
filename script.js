@@ -14,9 +14,7 @@ HTMLbody.insertAdjacentHTML("afterbegin", `
 
 const searchBox = document.querySelector("#search-box") //Needs to be loaded after its added
 
-//const modifyPokemonEntries = ()
-
-pokemonArray.forEach(pokemonEntry => {
+const modifyPokemonEntries = (pokemonEntry) => {
     let types = pokemonEntry.types.toString()
     types = types.replace(",", " & ")
     cardContainer.innerHTML += `
@@ -28,23 +26,17 @@ pokemonArray.forEach(pokemonEntry => {
             </div>
         </div>
         `
+}
+
+pokemonArray.forEach(pokemonEntry => {
+    modifyPokemonEntries(pokemonEntry)
 })
 
 const filterPokemonByNameEntries = () => {
-    cardContainer.innerHTML = `<div class="card"></div>`
+    cardContainer.innerHTML = ``
     pokemonArray.forEach(pokemonEntry => {
         if (pokemonEntry.name.includes(searchBox.value)) {
-            let types = pokemonEntry.types.toString()
-            types = types.replace(",", " & ")
-            cardContainer.innerHTML += `
-                <div class="card">
-                    <img class="card__image" src="${pokemonEntry.sprite}" alt="${pokemonEntry.name}">
-                    <div class="card__content">
-                        <h1 class="card__heading">${pokemonEntry.name}</h1>
-                        <p class="card__text">${pokemonEntry.name} (#${pokemonEntry.id}) is a ${types} type pokemon.</p>
-                    </div>
-                </div>
-                `
+            modifyPokemonEntries(pokemonEntry)
         }
     })
 }
