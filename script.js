@@ -4,9 +4,6 @@ console.log(pokemonArray)
 const HTMLbody = document.querySelector("body")
 const cardContainer = document.querySelector(".card-container")
 
-// HTMLbody.innerHTML += `
-//     <input id="search-box" type=input name="search" value="Search for a Pokemon">
-//     `
 HTMLbody.insertAdjacentHTML("afterbegin", `
 <input id="search-box" type=input name="search" value="Search for a Pokemon">
 <style>position: absolute; right: 0;</style>
